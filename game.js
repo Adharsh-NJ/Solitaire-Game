@@ -115,11 +115,12 @@ function dragOver(e) {
 function dropCard() {
   this.append(...draggedItems)
   let childCount = this.childElementCount - (+this.id)
-  childCount = childCount <= 0 ? 0 : childCount;
+  childCount = childCount <= 0 ? 1 : childCount;
+  childCount = this.childElementCount === 0 ?0:childCount;
   draggedItems.length === 1 ? draggedItems[0].style.transform = `translateY(${childCount * 2.5}rem)` :
     draggedItems.map((value, index) => {
       if (childCount === 0 && index === 0) {
-        value.style.transform = `translateY(${(index + 1) * 2.5}rem)`
+        value.style.transform = `translateY(${0 * 2.5}rem)`
       } else {
         value.style.transform = `translateY(${(index + 1) * 2.5}rem)`
       }
